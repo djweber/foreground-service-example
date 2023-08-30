@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.example.foregroundtests.ui.theme.ForegroundTestsTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +35,10 @@ class MainActivity : ComponentActivity() {
     override fun onPause() {
         super.onPause()
         val intent = Intent(this, TestService::class.java)
-        ContextCompat.startForegroundService(this, intent)
+        runBlocking {
+            delay(5000)
+            ContextCompat.startForegroundService(this, intent)
+        }
     }
 }
 
