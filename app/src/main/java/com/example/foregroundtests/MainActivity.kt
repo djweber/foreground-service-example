@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(this, TestService::class.java)
         runBlocking {
             delay(5000)
-            ContextCompat.startForegroundService(this, intent)
+            ContextCompat.startForegroundService(this@MainActivity, intent)
         }
     }
 }
